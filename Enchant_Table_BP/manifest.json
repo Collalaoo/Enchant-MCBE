@@ -10,13 +10,13 @@
   "modules": [
     {
       "type": "data",
-      "uuid": "a5b3c8a1-1234-4e5f-a123-abcdef123456",
+      "uuid": "8527bb10-6f9c-4241-a529-35d0ee372d1f",
       "version": [1, 0, 0]
     },
     {
       "type": "script",
       "language": "javascript",
-      "uuid": "b6c4d9b2-2345-5a6f-b234-bcdefg234567",
+      "uuid": "3516865f-6e7b-4b2a-90d4-7c56b6817daf",
       "version": [1, 0, 0],
       "entry": "scripts/load_plugin.js"
     }
