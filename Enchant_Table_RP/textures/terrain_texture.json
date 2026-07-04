@@ -5,7 +5,7 @@
 	"texture_name": "atlas.terrain",
 	"texture_data": {
 		"enchant_table_plus": {
-			"textures": "arucube/enchant_table/resources/blocks/enchant_table_plus"
+			"textures": "textures/blocks/enchant_table_plus"
 		}
 	}
 }
