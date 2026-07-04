@@ -5,7 +5,7 @@
     "description": "Розширений стіл зачарування — ресурси",
     "uuid": "edeb2cdc-791e-4edb-b279-0a53f4fae3d5",
     "version": [2, 0, 0],
-    "min_engine_version": [26, 32, 0]
+    "min_engine_version": [1, 21, 50]
   },
   "modules": [
     {

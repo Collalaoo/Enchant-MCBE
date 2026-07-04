@@ -5,7 +5,7 @@
     "description": "Розширений стіл зачарування — нові зачарування, сумісність, UI",
     "uuid": "2252a380-edfc-408d-ac4f-118a1128d251",
     "version": [2, 0, 0],
-    "min_engine_version": [26, 32, 0]
+    "min_engine_version": [1, 21, 50]
   },
   "modules": [
     {
