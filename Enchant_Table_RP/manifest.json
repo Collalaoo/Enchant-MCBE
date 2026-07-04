@@ -4,7 +4,7 @@
     "name": "Зачарування+ [RP]",
     "description": "Розширений стіл зачарування — ресурси",
     "uuid": "7162a92b-7444-4e12-b7b5-ed17b8ba608e",
-    "version": [2, 0, 0],
+    "version": [2, 0, 3],
     "min_engine_version": [1, 21, 50]
   },
   "modules": [
@@ -17,7 +17,7 @@
   "dependencies": [
     {
       "uuid": "15ea8e50-76eb-4f8a-886a-2a624c69e0a4",
-      "version": [2, 0, 0]
+      "version": [2, 0, 3]
     }
   ]
 }
