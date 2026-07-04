@@ -1,6 +1,5 @@
-import { world, system, ItemStack } from '@minecraft/server';
-import { config } from './config.js';
-import { ENCHANTMENTS, ENCHANT_TRANSLATIONS as T } from './enchantment_db.js';
+import { world } from '@minecraft/server';
+import { ENCHANT_TRANSLATIONS as T } from './enchantment_db.js';
 import { showItemSelection, showActionMenu } from './ui.js';
 import { openEnchantMenu } from './logic/enchant.js';
 import { openDisenchantMenu } from './logic/disenchant.js';
@@ -18,13 +17,16 @@ function getEnchantableItems(player) {
     if (!stack) continue;
     const enchComp = stack.getComponent('enchantable');
     if (!enchComp) continue;
-    const nameTag = stack.nameTag || stack.typeId.split(':').pop().replace(/_/g, ' ');
-    items.push({
-      slot: i,
-      stack,
-      name: nameTag.charAt(0).toUpperCase() + nameTag.slice(1),
-      getComponent: (id) => stack.getComponent(id),
-    });
+
+    let name;
+    try {
+      const id = stack.typeId.split(':').pop().replace(/_/g, ' ');
+      name = id.charAt(0).toUpperCase() + id.slice(1);
+    } catch {
+      name = '§7?';
+    }
+
+    items.push({ slot: i, stack, name });
   }
   return items;
 }
@@ -41,40 +43,38 @@ function setItemStack(player, slot, stack) {
   inv.container.setItem(slot, stack);
 }
 
-world.afterEvents.playerInteractWithBlock.subscribe((event) => {
-  if (event.block.typeId !== BLOCK_ID) return;
-  if (event.hand?.typeId && event.hand.typeId !== 'minecraft:air') return;
+function main(event) {
+  try {
+    if (event.block.typeId !== BLOCK_ID) return;
+    const handEmpty = !event.hand || !event.hand.typeId || event.hand.typeId === 'minecraft:air';
+    if (!handEmpty) return;
 
-  const player = event.player;
-  system.run(async () => {
+    const player = event.player;
     const items = getEnchantableItems(player);
     if (!items.length) {
       player.sendMessage(T.no_enchantable_items);
       return;
     }
 
-    const selected = await showItemSelection(player, items);
-    if (!selected) return;
+    showItemSelection(player, items).then((selected) => {
+      if (!selected) return;
+      showActionMenu(player, selected.name).then((action) => {
+        if (action === null) return;
+        const stack = getItemStack(player, selected.slot);
+        if (!stack) {
+          player.sendMessage('§cПредмет більше недоступний!');
+          return;
+        }
+        switch (action) {
+          case 0: openEnchantMenu(player, selected.slot, stack); break;
+          case 1: openDisenchantMenu(player, selected.slot, stack); break;
+          case 2: openTransferMenu(player, selected.slot, stack, items); break;
+        }
+      });
+    });
+  } catch (e) {
+    event.player?.sendMessage?.('§cПомилка: ' + e.message);
+  }
+}
 
-    const action = await showActionMenu(player, selected.name);
-    if (action === null) return;
-
-    const stack = getItemStack(player, selected.slot);
-    if (!stack) {
-      player.sendMessage('§cПредмет більше недоступний!');
-      return;
-    }
-
-    switch (action) {
-      case 0:
-        await openEnchantMenu(player, selected.slot, stack);
-        break;
-      case 1:
-        await openDisenchantMenu(player, selected.slot, stack);
-        break;
-      case 2:
-        await openTransferMenu(player, selected.slot, stack, items);
-        break;
-    }
-  });
-});
+world.afterEvents.playerInteractWithBlock.subscribe(main);
