@@ -43,7 +43,7 @@ function setItemStack(player, slot, stack) {
 
 world.afterEvents.playerInteractWithBlock.subscribe((event) => {
   if (event.block.typeId !== BLOCK_ID) return;
-  if (event.hand && event.hand.typeId && event.hand.typeId !== '') return;
+  if (event.hand?.typeId && event.hand.typeId !== 'minecraft:air') return;
 
   const player = event.player;
   system.run(async () => {
