@@ -3,21 +3,21 @@
   "header": {
     "name": "Зачарування+ [RP]",
     "description": "Розширений стіл зачарування — ресурси",
-    "uuid": "7162a92b-7444-4e12-b7b5-ed17b8ba608e",
-    "version": [2, 0, 3],
+    "uuid": "3547b681-8f37-452a-a136-f3fa9ed0fee3",
+    "version": [2, 0, 4],
     "min_engine_version": [1, 21, 50]
   },
   "modules": [
     {
       "type": "resources",
-      "uuid": "4bde0699-0344-4e10-baad-5235a1b49210",
+      "uuid": "87da5490-5b2b-4eae-a248-a23a539f8468",
       "version": [1, 0, 0]
     }
   ],
   "dependencies": [
     {
-      "uuid": "15ea8e50-76eb-4f8a-886a-2a624c69e0a4",
-      "version": [2, 0, 3]
+      "uuid": "22f161f8-696e-46bc-9c57-f7c61ee03d93",
+      "version": [2, 0, 4]
     }
   ]
 }

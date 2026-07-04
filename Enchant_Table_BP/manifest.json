@@ -3,20 +3,20 @@
   "header": {
     "name": "Зачарування+ [BP]",
     "description": "Розширений стіл зачарування — нові зачарування, сумісність, UI",
-    "uuid": "15ea8e50-76eb-4f8a-886a-2a624c69e0a4",
-    "version": [2, 0, 3],
+    "uuid": "22f161f8-696e-46bc-9c57-f7c61ee03d93",
+    "version": [2, 0, 4],
     "min_engine_version": [1, 21, 50]
   },
   "modules": [
     {
       "type": "data",
-      "uuid": "0f327ab6-5e52-4cd1-bc64-2b9f2f87de2a",
+      "uuid": "5826c8c1-b08c-4491-a0dc-1ffd73eead47",
       "version": [1, 0, 0]
     },
     {
       "type": "script",
       "language": "javascript",
-      "uuid": "67642b59-ec45-442e-83b3-12df614072d6",
+      "uuid": "1a15c891-3678-4abb-9240-338bacb9ab67",
       "version": [1, 0, 0],
       "entry": "scripts/load_plugin.js"
     }
@@ -31,8 +31,8 @@
       "version": "1.8.0"
     },
     {
-      "uuid": "7162a92b-7444-4e12-b7b5-ed17b8ba608e",
-      "version": [2, 0, 3]
+      "uuid": "3547b681-8f37-452a-a136-f3fa9ed0fee3",
+      "version": [2, 0, 4]
     }
   ],
   "capabilities": ["script_eval"]
